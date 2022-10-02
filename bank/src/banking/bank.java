@@ -15,7 +15,7 @@ public class bank {
 		int ch;
 
 		while (true) {
-			System.out.println("\n $ Welcome to Bank $ \n");
+			System.out.println("\n $ Welcome to MY Bank $ \n");
 			System.out.println("1)Create Account");
 			System.out.println("2)Login Account");
 			
