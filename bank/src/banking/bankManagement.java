@@ -85,7 +85,7 @@ public class bankManagement { // these class provides all// bank method
 							amt = Integer.parseInt(sc.readLine());
 
 							if (bankManagement.transferMoney(senderAc, receiveAc,amt)) {
-								System.out.println("MSG : Money Sent Successfully!\n");
+								System.out.println("MSG : Money Sent Successfully\n");
 							}
 							else {
 								System.out.println("ERR : Failed!\n");
