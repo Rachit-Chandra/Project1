@@ -150,7 +150,7 @@ public class bankManagement { // these class provides all// bank method
 		
 		
 		try {
-			con.setAutoCommit(false);
+			
 			sql = "select * from customer where ac_no="+ currAc;
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -159,17 +159,17 @@ public class bankManagement { // these class provides all// bank method
 			
 			Statement st = con.createStatement();
 
-			con.setSavepoint();
+			
 			
 			sql ="update customer set balance=balance+"+ depo +" where ac_no="+ currAc;
 			st.executeUpdate(sql);
 			
-			con.commit();
+
 			return true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			con.rollback();
+			
 		}
 		
 		return false;
@@ -177,30 +177,22 @@ public class bankManagement { // these class provides all// bank method
 	public static boolean withdraw(int widrw, int currAc) throws SQLException {
 		
 		try {
-			con.setAutoCommit(false);
 			sql = "select * from customer where ac_no="+ currAc;
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 				
 			Statement st = con.createStatement();
 
-			con.setSavepoint();
+
 			
 			sql ="update customer set balance=balance-"+ widrw +" where ac_no="+ currAc;
 			st.executeUpdate(sql);
 			
-			con.commit();
 			return true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			con.rollback();
 		}
-		
-		
-		
-		
-		
 		
 		return false;
 	}
@@ -240,7 +232,6 @@ public class bankManagement { // these class provides all// bank method
 			return false;
 		}
 		try {
-			con.setAutoCommit(false);
 			sql = "select * from customer where ac_no="+ sender_ac;
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -255,7 +246,6 @@ public class bankManagement { // these class provides all// bank method
 			Statement st = con.createStatement();
 
 			//debit
-			con.setSavepoint();
 
 			sql = "update customer set balance=balance-"+ amount + " where ac_no=" + sender_ac;
 			if (st.executeUpdate(sql) == 1) {
@@ -266,12 +256,10 @@ public class bankManagement { // these class provides all// bank method
 			sql = "update customer set balance=balance+"+ amount + " where ac_no=" + reveiver_ac;
 			st.executeUpdate(sql);
 
-			con.commit();
 			return true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			con.rollback();
 		}
 		// return
 		return false;
